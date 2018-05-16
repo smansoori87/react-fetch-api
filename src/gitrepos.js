@@ -14,7 +14,12 @@ class GitRepos extends Component {
     const gitUrl = "https://api.github.com/user";
     fetch(gitUrl)
       .then(response => response.json())
-      .then(response => console.log(response));
+      //.then(response => console.log(response))
+      .then(response =>
+        this.setState({
+          result: response
+        })
+      );
   }
 
   render() {
@@ -22,6 +27,7 @@ class GitRepos extends Component {
       <div>
         <h1>Git Data</h1>
         <input type="button" value="Get Data" onClick={this.getGitData} />
+        <p>{this.state.result.message}</p>
       </div>
     );
   }
